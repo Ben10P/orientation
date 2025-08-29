@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>QCM Orientation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <h2>Étape 3 : Réponds à ces 10 questions rapides</h2>
+        <div class="progress"><div class="progress-bar" style="width:50%"></div></div>
+
+        <form id="qcmForm">
+            <!-- Exemple de 6 questions, tu peux ajouter jusqu'à 10 -->
+            <div class="qcm-question">
+                <p>1. Tu préfères travailler avec :</p>
+                <label><input type="radio" name="q1" value="A" required> Des chiffres et calculs</label><br>
+                <label><input type="radio" name="q1" value="B"> Des idées et concepts</label>
+            </div>
+
+            <div class="qcm-question">
+                <p>2. Préfères-tu :</p>
+                <label><input type="radio" name="q2" value="A" required> Expérimenter et créer</label><br>
+                <label><input type="radio" name="q2" value="B"> Lire et analyser</label>
+            </div>
+
+            <!-- Ajoute les questions 3 à 10 de la même manière -->
+
+            <button type="button" onclick="window.location.href='metiers.html'">🔙 Précédent</button>
+            <button type="submit">Terminer</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('qcmForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const qcm = {};
+            const formData = new FormData(e.target);
+            for(let [key, value] of formData.entries()) {
+                qcm[key] = value;
+            }
+            saveQCM(qcm); // fonction du script.js
+            window.location.href = 'resultat.html';
+        });
+    </script>
+</body>
+</html>

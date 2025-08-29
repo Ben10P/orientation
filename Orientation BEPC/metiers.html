@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Choix des métiers</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .metiers-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card-metier {
+            flex: 0 0 200px;
+            background: #4B8DF8;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card-metier:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+
+        .card-metier i {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <h2>Étape 2 : Choisis jusqu'à 3 métiers</h2>
+    <div class="metiers-container" id="metiers-container">
+        <!-- Les cartes métiers seront générées ici par JS -->
+    </div>
+
+    <button onclick="window.location.href='notes.html'">🔙 Précédent</button>
+    <button id="suivantBtn">Suivant</button>
+
+    <script>
+        const metiers = [
+            {nom: "Ingénieur en informatique", icon: "fa-solid fa-computer"},
+            {nom: "Architecte", icon: "fa-solid fa-drafting-compass"},
+            {nom: "Médecin", icon: "fa-solid fa-user-doctor"},
+            {nom: "Infirmier(e)", icon: "fa-solid fa-hospital-user"},
+            {nom: "Banquier", icon: "fa-solid fa-money-bill-wave"},
+            {nom: "Entrepreneur", icon: "fa-solid fa-briefcase"},
+            {nom: "Enseignant", icon: "fa-solid fa-chalkboard-user"},
+            {nom: "Journaliste", icon: "fa-solid fa-newspaper"},
+            {nom: "Ingenieur BTP", icon: "fa-solid fa-hard-hat"},
+            {nom: "Avocat", icon: "fa-solid fa-gavel"},
+            {nom: "Mecanicien", icon: "fa-solid fa-gears"},
+            {nom: "Gestion administratif", icon: "fa-solid fa-file-invoice"},
+            {nom: "Hôtellerie et Tourisme", icon: "fa-solid fa-hotel"},
+            {nom: "Agro-industriel", icon: "fa-solid fa-seedling"}
+        ];
+
+        const container = document.getElementById('metiers-container');
+        const selectedMetiers = [];
+
+        metiers.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'card-metier';
+            card.innerHTML = `<i class="${m.icon}"></i><p>${m.nom}</p>`;
+            card.addEventListener('click', () => {
+                if(selectedMetiers.includes(m.nom)) {
+                    selectedMetiers.splice(selectedMetiers.indexOf(m.nom),1);
+                    card.style.background = '#4B8DF8';
+                } else if(selectedMetiers.length < 3){
+                    selectedMetiers.push(m.nom);
+                    card.style.background = '#28a745';
+                }
+            });
+            container.appendChild(card);
+        });
+
+        document.getElementById('suivantBtn').addEventListener('click', () => {
+            if(selectedMetiers.length === 0) {
+                alert("Veuillez sélectionner au moins un métier !");
+                return;
+            }
+            saveMetiers(selectedMetiers); // fonction du script.js pour stocker
+            window.location.href = 'qcm.html'; // ou page suivante
+        });
+    </script>
+</body>
+</html>

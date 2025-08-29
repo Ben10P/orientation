@@ -1,0 +1,134 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #4B8DF8;
+}
+
+/* Section accueil */
+.welcome {
+    position: relative;
+    height: 100vh; /* prend toute la hauteur de l’écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* Image floutée en arrière-plan uniquement pour la div welcome */
+.welcome::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("images/ado-adulte.png") no-repeat center center/cover;
+    filter: blur(8px);
+    transform: scale(1.1); /* éviter bords vides avec le blur */
+    z-index: 1;
+}
+
+/* Contenu au-dessus de l’image */
+.welcome-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4); /* fond semi-transparent pour lisibilité */
+    border-radius: 12px;
+}
+
+/* Boutons */
+button, .btn {
+    background-color: rgba(75, 141, 248, 0.9);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: rgba(56, 105, 195, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Flèche bas animée */
+.scroll-down {
+    font-size: 2em;
+    cursor: pointer;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+input[type=number], select {
+    padding: 8px;
+    margin: 8px 0;
+    width: 60%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.card {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.progress {
+    margin-top: 20px;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #4B8DF8;
+    transition: width 0.5s;
+}
